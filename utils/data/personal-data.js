@@ -2,7 +2,7 @@ export const personalData = {
   name: "Amlakie Tadesse",
   profile: '/amlakie_t.png',
   designation: "Software Developer",
-  description: "I am Amlakie Tadesse, an experienced developer proficient in both mobile app and web development technologies. In mobile app development, I'm skilled in Java and Kotlin for native Android apps, as well as Flutter and React Native for cross-platform solutions. For web development, I specialize in JavaScript, utilizing powerful frameworks such as React.js, Angular, and Vue.js to create dynamic and responsive web applications.Passionate about problem-solving and quick to adapt to new technologies. I am available for any kind of job opportunity that suits my skills and interests.",
+  description: "I am Amlakie Tadesse, a seasoned developer, proficient in mobile app and web development. In mobile app development, I excel in Java, Kotlin for native Android apps, Flutter, and React Native for cross-platform solutions. For web development, my specialization is JavaScript, utilizing frameworks such as React.js, Angular, and Vue.js. I'm driven by a passion for problem-solving and quick adaptation to new technologies. I am available for any kind of job opportunity that suits my skills and interests.",
   email: 'amlakietad@gmail.com',
   phone: '+251-912-416946',
   address: 'Addis Ababa, Ethiopia',
