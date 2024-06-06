@@ -46,7 +46,7 @@ export const projectsData = [
     },
         {
         id: 5,
-        name: 'Newsroom Management2',
+        name: 'Android POS Application',
         description: "My team and I developed an Android POS (Point of Sale) application tailored for various banks in Ethiopia. As a full-stack developer, I contributed to the development of the application's frontend and backend functionalities. On the frontend, I focused on crafting a user-friendly interface using Java and XML. For backend operations, I utilized technologies such as SQLite for local data storage and integration with bank APIs for transaction processing and authorization.",
         tools: ['Java', 'Android SDK', 'XML', 'SQLite', 'OkHttp', 'Payment Gateway Integration'],
         code: '',
