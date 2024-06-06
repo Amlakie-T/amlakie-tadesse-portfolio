@@ -18,8 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
      <Head>
         <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        {/* Ensure no favicon is included */}
+        <meta name="description" content={metadata.description}/>
       </Head>
       <body className={inter.className}>
         <ToastContainer />
