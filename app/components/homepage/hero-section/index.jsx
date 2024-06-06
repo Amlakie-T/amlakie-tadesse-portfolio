@@ -30,6 +30,9 @@ function HeroSection() {
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
           </h1>
+           <div className="typing-homeclass">
+                <Typing />
+              </div>
 
           <div className="my-12 flex items-center gap-5">
             <Link
