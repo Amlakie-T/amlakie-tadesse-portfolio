@@ -55,10 +55,10 @@ export const projectsData = [
         role: 'Full Stack Developer',
     },
     {
-        id: 5,
+        id: 6,
         name: 'IOT Based Android Application',
         description: "My team and I developed an IoT-based Android application focused on smart home management. As a full-stack developer, I contributed to building the app's frontend and backend functionalities. Using Java for Android development, I integrated IoT sensors and devices, enabling users to monitor and control their home environment remotely. We utilized Firebase for backend services, integrating real-time data syncing and authentication. Additionally, I implemented UI/UX design principles to ensure a seamless user experience.",
-        tools: ['Java', 'C', 'Arduino', 'Android Studio', 'Firebase', 'IoT Sensors'],
+        tools: ['Java', 'C', 'XML', 'SQLite', 'Arduino', 'Android Studio', 'Firebase', 'IoT Sensors'],
         code: '',
         demo: '',
         image: ayla,
