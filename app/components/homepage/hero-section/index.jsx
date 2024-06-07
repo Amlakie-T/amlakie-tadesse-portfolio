@@ -1,6 +1,4 @@
 // @flow strict
-import React from 'react';
-import { useState, useEffect } from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,19 +9,27 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-   const [typedText, setTypedText] = useState('');
-  const textToType = "I'm a Skilled " + personalData.designation + ".";
+  // Function to simulate typing effect
+  const typeEffect = (text, element) => {
+    let i = 0;
+    const speed = 100; // Typing speed in milliseconds
 
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+
+    type();
+  };
+
+  // Call the typing effect function when the component mounts
   useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      setTypedText((prevText) => prevText + textToType[currentIndex]);
-      currentIndex++;
-      if (currentIndex === textToType.length) clearInterval(interval);
-    }, 100); // Adjust the typing speed by changing the interval duration
-
-    return () => clearInterval(interval);
-  }, [textToType]);
+    const designationElement = document.getElementById("designation");
+    typeEffect(`I'm a Skilled ${personalData.designation}.`, designationElement);
+  }, []);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -40,11 +46,7 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Skilled      `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
-            .
-            
-             {typedText && <span className=" text-[#16f2b3]">{typedText}</span>}
+           <span id="designation" className=" text-[#16f2b3]"></span>
           </h1>
           <div className="my-12 flex items-center gap-5">
             <Link
@@ -205,4 +207,4 @@ function HeroSection() {
   );
 };
 
-export default React.memo(HeroSection);
+export default HeroSection;
