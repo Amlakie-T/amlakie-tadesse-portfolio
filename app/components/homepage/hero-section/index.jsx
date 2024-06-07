@@ -1,6 +1,5 @@
 // @flow strict
-import React from 'react';
-import Typewriter from 'typewriter-effect';
+
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,15 +27,7 @@ function HeroSection() {
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a Professional `}
-             <span className="text-[#16f2b3]">
-        <Typewriter
-          options={{
-            strings: [personalData.designation],
-            autoStart: true,
-            loop: true,
-          }}
-        />
-      </span>
+             <span className="text-[#16f2b3]">{personalData.designation}</span>
           </h1>
 
           <div className="my-12 flex items-center gap-5">
