@@ -10,6 +10,34 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
+  const [typedText, setTypedText] = useState("");
+  const textRef = useRef(null); // useRef to store typed text element
+
+  useEffect(() => {
+    const text = ", I'm a Professional " + personalData.designation + ".";
+    let i = 0;
+    let isTyping = true; // Flag to control loop
+
+    const typeWriter = () => {
+      if (isTyping && i < text.length) {
+        setTypedText(typedText + text.charAt(i));
+        i++;
+        setTimeout(typeWriter, 50); // Adjust speed here (in milliseconds)
+      } else if (isTyping) {
+        // Reset after typing whole text
+        setTypedText("");
+        i = 0;
+        setTimeout(typeWriter, 1000); // Adjust pause between loops (ms)
+      }
+    };
+
+    // Start typing animation on component mount
+    typeWriter();
+
+    return () => {
+      isTyping = false; // Cleanup function to stop loop on unmount
+    };
+  }, []); // Empty dependency array to run only once
   
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
