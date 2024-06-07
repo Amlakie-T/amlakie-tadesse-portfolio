@@ -10,11 +10,11 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-  const [typedText, setTypedText] = useState("");
-  const textRef = useRef(null); // useRef to store typed text element
+  const [typedText, setTypedText] = useState(""); // Only used on client-side
+  const textRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') { // Check for client-side rendering
       const text = ", I'm a Professional Web Developer.";
       let i = 0;
       let isTyping = true;
@@ -41,10 +41,6 @@ function HeroSection() {
 
       typeWriter();
     }
-
-    return () => {
-      isTyping = false; // Cleanup function to stop loop on unmount
-    };
   }, []);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
