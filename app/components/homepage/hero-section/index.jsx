@@ -1,4 +1,4 @@
-@flow strict
+// @flow strict
 
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
@@ -8,46 +8,8 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
-import { useRef } from 'react'; // Import useEffect and useState hooks
 
 function HeroSection() {
-     const textArray = [
-    "Developer",
-    "Software Engineer",
-    "Frontend Developer",
-    "Backend Developer"
-  ];
-
-  const typedTextRef = useRef('');
-  const textIndexRef = useRef(0);
-  const isDeletingRef = useRef(false);
-  const typingSpeedRef = useRef(100);
-
-  const type = () => {
-    const currentText = textArray[textIndexRef.current];
-    const typedLength = typedTextRef.current.length;
-
-    if (isDeletingRef.current) {
-      typedTextRef.current = currentText.substring(0, typedLength - 1);
-    } else {
-      typedTextRef.current = currentText.substring(0, typedLength + 1);
-    }
-
-    if (!isDeletingRef.current && typedTextRef.current === currentText) {
-      typingSpeedRef.current = 1000; // Pause at end
-      isDeletingRef.current = true;
-    } else if (isDeletingRef.current && typedTextRef.current === '') {
-      isDeletingRef.current = false;
-      textIndexRef.current = (textIndexRef.current + 1) % textArray.length;
-      typingSpeedRef.current = 100; // Typing speed
-    }
-
-    setTimeout(type, typingSpeedRef.current);
-  };
-
-  // Initial call to start typing effect
-  type();
-
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -64,11 +26,10 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-           {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]" id="typing-text">{typedTextRef.current}</span>
-            <span className="typing-cursor"></span>
+            {` , I'm a Professional `}
+            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            .
           </h1>
-          
 
           <div className="my-12 flex items-center gap-5">
             <Link
