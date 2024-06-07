@@ -8,8 +8,42 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
+import { useState, useEffect } from "react";
 
 function HeroSection() {
+   const [currentText, setCurrentText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const textArray = [
+    "Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer"
+  ];
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentWord = textArray[index];
+      setCurrentText((prevText) => {
+        if (!isDeleting && prevText.length < currentWord.length) {
+          return currentWord.substring(0, prevText.length + 1);
+        } else if (isDeleting && prevText.length > 0) {
+          return currentWord.substring(0, prevText.length - 1);
+        } else {
+          setIsDeleting(!isDeleting);
+          setIndex((prevIndex) =>
+            !isDeleting ? prevIndex : (prevIndex + 1) % textArray.length
+          );
+          return prevText;
+        }
+      });
+    };
+
+    const typingInterval = setInterval(handleTyping, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [currentText, index, isDeleting, textArray]);
+
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -28,6 +62,9 @@ function HeroSection() {
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            .
+            {` , I'm a Professional `}
+            <span className=" text-[#16f2b3]">{currentText}</span>
             .
             
           </h1>
