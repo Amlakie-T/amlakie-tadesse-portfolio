@@ -29,13 +29,14 @@ function HeroSection() {
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
-            <span className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
+         <span className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
   Hello, <br />
   This is {' '}
   <span className="text-pink-500">{personalData.name}</span>
   {` , I'm a Professional `}
-  <span className="text-[#16f2b3]" id="typing-text"></span>
+  <span id="typing-text" class="text-[#16f2b3]"></span>
 </span>
+
 <script>
   const textArray = [
     "Developer",
@@ -56,7 +57,7 @@ function HeroSection() {
       text = currentText.substring(0, text.length + 1);
     }
 
-    document.getElementById('typing-text').innerHTML = `<span>${text}</span><span class="typing-cursor"></span>`;
+    document.getElementById('typing-text').innerHTML = text;
 
     let typeSpeed = 100; // Adjust typing speed here
 
