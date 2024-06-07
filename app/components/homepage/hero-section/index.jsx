@@ -33,8 +33,8 @@ function HeroSection() {
           typeWriter();
         }, 1000); // Adjust pause between loops (ms)
       } else {
-        // Add blinking cursor using CSS
-        textRef.current.classList.add("blinking-cursor");
+        // Add blinking cursor using CSS (style applied inline)
+        textRef.current.style.animation = "blink 0.5s step-end infinite";
       }
     };
 
@@ -44,7 +44,6 @@ function HeroSection() {
       isTyping = false; // Cleanup function to stop loop on unmount
     };
   }, []); // Empty dependency array to run only once
-  
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -61,7 +60,7 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-             <span ref={textRef}>{typedText}</span>
+             <span>{typedText}</span>
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
@@ -219,5 +218,6 @@ function HeroSection() {
     </section>
   );
 };
+}
 
 export default HeroSection;
