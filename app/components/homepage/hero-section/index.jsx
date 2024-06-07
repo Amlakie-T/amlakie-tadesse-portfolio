@@ -8,68 +8,45 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
-import { useEffect, useState } from 'react'; // Import useEffect and useState hooks
+import { useRef } from 'react'; // Import useEffect and useState hooks
 
 function HeroSection() {
-    const textArray = [
+     const textArray = [
     "Developer",
     "Software Engineer",
     "Frontend Developer",
     "Backend Developer"
   ];
 
-  const [textIndex, setTextIndex] = useState(0);
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const typingSpeed = 100; // Adjust typing speed here
-  const deletingSpeed = 50; // Adjust deleting speed here
-  const pauseSpeed = 1000; // Pause at end, adjust as needed
+  const typedTextRef = useRef('');
+  const textIndexRef = useRef(0);
+  const isDeletingRef = useRef(false);
+  const typingSpeedRef = useRef(100);
 
-  useEffect(() => {
-    const currentText = textArray[textIndex];
+  const type = () => {
+    const currentText = textArray[textIndexRef.current];
+    const typedLength = typedTextRef.current.length;
 
-    // Recursive typing function
-    const typeText = (currentIndex) => {
-      if (isDeleting) {
-        setText(currentText.substring(0, currentIndex));
-      } else {
-        setText(currentText.substring(0, currentIndex + 1));
-      }
+    if (isDeletingRef.current) {
+      typedTextRef.current = currentText.substring(0, typedLength - 1);
+    } else {
+      typedTextRef.current = currentText.substring(0, typedLength + 1);
+    }
 
-      // Determine next step
-      const nextIndex = isDeleting ? currentIndex - 1 : currentIndex + 1;
+    if (!isDeletingRef.current && typedTextRef.current === currentText) {
+      typingSpeedRef.current = 1000; // Pause at end
+      isDeletingRef.current = true;
+    } else if (isDeletingRef.current && typedTextRef.current === '') {
+      isDeletingRef.current = false;
+      textIndexRef.current = (textIndexRef.current + 1) % textArray.length;
+      typingSpeedRef.current = 100; // Typing speed
+    }
 
-      // Set timeout for next step
-      const speed = isDeleting ? deletingSpeed : typingSpeed;
+    setTimeout(type, typingSpeedRef.current);
+  };
 
-      // Check for completion
-      if (isDeleting && currentIndex === 0) {
-        setIsDeleting(false);
-        setTextIndex((textIndex + 1) % textArray.length); // Move to next text
-        setTimeout(() => {
-          typeText(0);
-        }, pauseSpeed);
-      } else if (!isDeleting && currentIndex === currentText.length) {
-        setIsDeleting(true);
-        setTimeout(() => {
-          typeText(currentText.length);
-        }, pauseSpeed);
-      } else {
-        setTimeout(() => {
-          typeText(nextIndex);
-        }, speed);
-      }
-    };
-
-    // Start typing
-    typeText(0);
-
-    // Cleanup function
-    return () => {
-      // Clear any remaining timeouts
-      clearTimeout();
-    };
-  }, [textIndex, isDeleting, textArray]);
+  // Initial call to start typing effect
+  type();
 
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
@@ -88,9 +65,8 @@ function HeroSection() {
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{text}</span>
+            <span className=" text-[#16f2b3]" id="typing-text">{typedTextRef.current}</span>
             <span className="typing-cursor"></span>
-    
           </h1>
           
 
