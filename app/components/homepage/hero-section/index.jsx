@@ -32,7 +32,8 @@ function HeroSection() {
     return () => clearTimeout(); // Cleanup function to prevent memory leaks
   }, [loopCount]); // Run effect only when loopCount changes
 
-  useEffect(() => {
+useEffect(() => {
+  const deleteEffect = async () => {
     if (isDeleting) {
       const text = designationRef.current.textContent;
 
@@ -44,7 +45,11 @@ function HeroSection() {
       setLoopCount(loopCount + 1); // Restart the loop
       setIsDeleting(false);
     }
-  }, [isDeleting]);
+  };
+
+  deleteEffect(); // Call the async function
+
+}, [isDeleting]);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
