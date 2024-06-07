@@ -73,7 +73,7 @@ function HeroSection() {
             .
           </h1>
           <div>
-          <h1 id="typing-text" className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]"></h1>
+       <h1 id="typing-text" className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem] text-[#16f2b3]"></h1>
             </div>
           <div className="my-12 flex items-center gap-5">
             <Link
