@@ -1,6 +1,5 @@
 
-import React from "react";
-import Typewriter from "typewriter-effect";
+
 import { personalData } from "@/utils/data/personal-data";
 import AboutSection from "./components/homepage/about";
 import Blog from "./components/homepage/blog";
