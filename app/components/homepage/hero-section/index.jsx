@@ -1,5 +1,5 @@
 // @flow strict
-
+import { useState, useEffect } from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,19 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
+  const [typedText, setTypedText] = useState('');
+  const textToType = "I'm a Skilled " + personalData.designation + ".";
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      setTypedText((prevText) => prevText + textToType[currentIndex]);
+      currentIndex++;
+      if (currentIndex === textToType.length) clearInterval(interval);
+    }, 100); // Adjust the typing speed by changing the interval duration
+
+    return () => clearInterval(interval);
+  }, [textToType]);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -29,6 +42,7 @@ function HeroSection() {
             {` , I'm a Skilled      `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
+             {typedText && <span className=" text-[#16f2b3]">{typedText}</span>}
           </h1>
           <div className="my-12 flex items-center gap-5">
             <Link
