@@ -1,5 +1,5 @@
 // @flow strict
-
+import React from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,11 +30,12 @@ function HeroSection() {
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
-             <div>
+             
+          </h1>
+          <div>
               <h1>Typing Effect Example</h1>
               <TypingEffect />
             </div>
-          </h1>
 
           <div className="my-12 flex items-center gap-5">
             <Link
