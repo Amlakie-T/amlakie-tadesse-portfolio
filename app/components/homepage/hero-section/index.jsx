@@ -1,5 +1,5 @@
 // @flow strict
-import React from "react";
+
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,9 +8,6 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
-
-// Import the Typing component from the same folder
-import Typing from "./typing";
 
 function HeroSection() {
   return (
@@ -29,12 +26,9 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a `}
-            <Typing />
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
-            
           </h1>
 
           <div className="my-12 flex items-center gap-5">
