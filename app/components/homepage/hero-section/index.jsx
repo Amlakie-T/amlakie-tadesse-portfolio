@@ -8,6 +8,7 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
+import TypingEffect from './TypingEffect';
 
 function HeroSection() {
   return (
@@ -30,14 +31,8 @@ function HeroSection() {
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
           </h1>
-         <div>
-            <iframe
-              title="Typer"
-              src="Typer.html" // Adjust path if needed
-              width="100%"
-              height="500px"
-              frameBorder="0"
-            />
+        <div>
+            <TypingEffect />
           </div>
           <div className="my-12 flex items-center gap-5">
             <Link
