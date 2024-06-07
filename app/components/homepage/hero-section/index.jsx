@@ -28,7 +28,19 @@ function HeroSection() {
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{<Typing />}</span>
+            <span className=" text-[#16f2b3]">{<Typewriter
+            options={{
+                strings: [
+                    "Developer",
+                    "Software Engineer",
+                    "Frontend Developer",
+                    "Backend Developer",
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: 50,
+            }}
+        />}</span>
             .
           </h1>
 
