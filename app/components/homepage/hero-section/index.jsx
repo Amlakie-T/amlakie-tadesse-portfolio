@@ -8,8 +8,16 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
+import TypingEffect from './TypingEffect';
 
 function HeroSection() {
+   const textArray = [
+    "Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer"
+  ];
+
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -26,9 +34,11 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
-            .
+           {` , I'm a Professional `}
+            <span className=" text-[#16f2b3]">
+              <TypingEffect textArray={textArray} typingSpeed={100} />
+            </span>
+            <span className="typing-cursor"></span>
     
           </h1>
           
