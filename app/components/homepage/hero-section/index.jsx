@@ -30,7 +30,16 @@ function HeroSection() {
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
           </h1>
-
+        <div>
+             
+              <iframe
+                title="Typer"
+                src="/app/components/homepage/hero-section/Typer.html"
+                width="100%"
+                height="500px"
+                frameBorder="0"
+              />
+            </div>
           <div className="my-12 flex items-center gap-5">
             <Link
               href={personalData.github}
