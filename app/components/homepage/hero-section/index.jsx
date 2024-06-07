@@ -1,5 +1,5 @@
 // @flow strict
-import React, { useState, useEffect, useRef } from "react";
+
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,38 +10,7 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-  const [typedText, setTypedText] = useState(""); // Only used on client-side
-  const textRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') { // Check for client-side rendering
-      const text = ", I'm a Professional Web Developer.";
-      let i = 0;
-      let isTyping = true;
-
-      const typeWriter = () => {
-        if (isTyping && i < text.length) {
-          setTypedText(typedText + text.charAt(i));
-          i++;
-          setTimeout(typeWriter, 50); // Adjust speed here (in milliseconds)
-        } else if (isTyping) {
-          // Reset after typing whole text
-          setTypedText("");
-          i = 0;
-          isTyping = false;
-          setTimeout(() => {
-            isTyping = true;
-            typeWriter();
-          }, 1000); // Adjust pause between loops (ms)
-        } else {
-          // Add blinking cursor using CSS (style applied inline)
-          textRef.current.style.animation = "blink 0.5s step-end infinite";
-        }
-      };
-
-      typeWriter();
-    }
-  }, []);
+  
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -58,7 +27,6 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-             <span>{typedText}</span>
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
