@@ -1,5 +1,5 @@
 // @flow strict
-
+import React, { useState, useEffect, useRef } from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,41 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
+ const [designationText, setDesignationText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopCount, setLoopCount] = useState(0);
+  const designationRef = useRef(null);
+
+  useEffect(() => {
+    const typingEffect = async () => {
+      const text = personalData.designation; // Assuming you have personalData object with designation property
+
+      for (let i = 0; i < text.length; i++) {
+        setDesignationText(text.substring(0, i + 1));
+        await new Promise(resolve => setTimeout(resolve, 50)); // Adjust typing speed as desired
+      }
+
+      setIsDeleting(true);
+    };
+
+    typingEffect();
+
+    return () => clearTimeout(); // Cleanup function to prevent memory leaks
+  }, [loopCount]); // Run effect only when loopCount changes
+
+  useEffect(() => {
+    if (isDeleting) {
+      const text = designationRef.current.textContent;
+
+      for (let i = text.length - 1; i >= 0; i--) {
+        setDesignationText(text.substring(0, i));
+        await new Promise(resolve => setTimeout(resolve, 30)); // Adjust deleting speed as desired
+      }
+
+      setLoopCount(loopCount + 1); // Restart the loop
+      setIsDeleting(false);
+    }
+  }, [isDeleting]);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -28,6 +63,10 @@ function HeroSection() {
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a Professional `}
              <span className="text-[#16f2b3]">{personalData.designation}</span>
+            {` , I'm a Professional `}
+            <span className="text-[#16f2b3]">
+              <span ref={designationRef}>{designationText}</span>
+            </span>
           </h1>
 
           <div className="my-12 flex items-center gap-5">
