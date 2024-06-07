@@ -1,3 +1,5 @@
+// TypingEffect.js
+
 import React, { useEffect, useState } from 'react';
 
 function TypingEffect() {
@@ -11,39 +13,41 @@ function TypingEffect() {
   let index = 0;
   let isDeleting = false;
 
-  useEffect(() => {
-    const type = () => {
-      const currentText = textArray[index];
-      if (isDeleting) {
-        setText(currentText.substring(0, text.length - 1));
-      } else {
-        setText(currentText.substring(0, text.length + 1));
-      }
-
-      let typeSpeed = 100; // Adjust typing speed here
-
-      if (isDeleting) {
-        typeSpeed /= 2; // Adjust deleting speed here
-      }
-
-      if (!isDeleting && text === currentText) {
-        typeSpeed = 1000; // Pause at end, adjust as needed
-        isDeleting = true;
-      } else if (isDeleting && text === '') {
-        isDeleting = false;
-        index++;
-        if (index === textArray.length) {
-          index = 0;
+  if (typeof window !== 'undefined') { // Check if window object is available (i.e., if the code is running on the client side)
+    useEffect(() => {
+      const type = () => {
+        const currentText = textArray[index];
+        if (isDeleting) {
+          setText(currentText.substring(0, text.length - 1));
+        } else {
+          setText(currentText.substring(0, text.length + 1));
         }
-      }
 
-      setTimeout(type, typeSpeed);
-    };
+        let typeSpeed = 100; // Adjust typing speed here
 
-    type();
+        if (isDeleting) {
+          typeSpeed /= 2; // Adjust deleting speed here
+        }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text]);
+        if (!isDeleting && text === currentText) {
+          typeSpeed = 1000; // Pause at end, adjust as needed
+          isDeleting = true;
+        } else if (isDeleting && text === '') {
+          isDeleting = false;
+          index++;
+          if (index === textArray.length) {
+            index = 0;
+          }
+        }
+
+        setTimeout(type, typeSpeed);
+      };
+
+      type();
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [text]);
+  }
 
   return (
     <span className="text-[#16f2b3]">
