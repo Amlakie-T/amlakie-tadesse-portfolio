@@ -8,10 +8,8 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
-import { useState, useEffect } from "react";
 
 function HeroSection() {
-
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -31,35 +29,7 @@ function HeroSection() {
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
-          
-            
           </h1>
-           <div id="typing-container" style="font-family: monospace; color: #fff;">
-              <script>
-                const texts = ["Developer", "Software Engineer", "Frontend Developer", "Backend Developer"];
-                let i = 0, txt = "", deleting = false;
-                
-                function type() {
-                  const t = texts[i];
-                  deleting ? txt = t.slice(0, -1) : txt = t.slice(0, txt.length + 1);
-                  document.getElementById('typing-container').innerHTML = `<span>${txt}</span><span class="cursor"></span>`;
-                  
-                  let speed = 100;
-                  deleting && (speed /= 2);
-                  !deleting && txt === t && (speed = 1000, deleting = true);
-                  deleting && txt === "" && (deleting = false, i++, i === texts.length && (i = 0));
-                  
-                  setTimeout(type, speed);
-                }
-                
-                window.onload = type;
-                
-                const style = document.createElement('style');
-                style.innerHTML = `.cursor { width: 8px; height: 16px; background: #0; animation: blink .8s infinite; }
-                                   @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }`;
-                document.head.appendChild(style);
-              </script>
-            </div>
 
           <div className="my-12 flex items-center gap-5">
             <Link
