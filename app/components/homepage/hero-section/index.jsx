@@ -1,6 +1,6 @@
 // @flow strict
 import React from "react";
-import Typing from "./Typing";
+import Typewriter from "typewriter-effect";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +41,6 @@ function HeroSection() {
                 deleteSpeed: 50,
             }}
         />}</span>
-            .
           </h1>
 
           <div className="my-12 flex items-center gap-5">
