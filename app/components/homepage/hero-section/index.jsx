@@ -1,4 +1,5 @@
 // @flow strict
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
@@ -10,7 +11,7 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-  const [typedText, setTypedText] = useState('');
+   const [typedText, setTypedText] = useState('');
   const textToType = "I'm a Skilled " + personalData.designation + ".";
 
   useEffect(() => {
@@ -203,4 +204,4 @@ function HeroSection() {
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);
