@@ -10,6 +10,48 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
+  const textArray = [
+    "Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer"
+  ];
+
+  let index = 0;
+  let text = "";
+  let isDeleting = false;
+
+  function type() {
+    const currentText = textArray[index];
+    if (isDeleting) {
+      text = currentText.substring(0, text.length - 1);
+    } else {
+      text = currentText.substring(0, text.length + 1);
+    }
+
+    document.getElementById('typing-text').innerHTML = text;
+
+    let typeSpeed = 100; // Adjust typing speed here
+
+    if (isDeleting) {
+      typeSpeed /= 2; // Adjust deleting speed here
+    }
+
+    if (!isDeleting && text === currentText) {
+      typeSpeed = 1000; // Pause at end, adjust as needed
+      isDeleting = true;
+    } else if (isDeleting && text === '') {
+      isDeleting = false;
+      index++;
+      if (index === textArray.length) {
+        index = 0;
+      }
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  window.onload = type;
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -30,53 +72,7 @@ function HeroSection() {
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
           </h1>
-           <h1 id="typing-text" style="color: #16f2b3;">
-  <script>
-    const textArray = [
-      "Developer",
-      "Software Engineer",
-      "Frontend Developer",
-      "Backend Developer"
-    ];
-
-    let index = 0;
-    let text = "";
-    let isDeleting = false;
-
-    function type() {
-      const currentText = textArray[index];
-      if (isDeleting) {
-        text = currentText.substring(0, text.length - 1);
-      } else {
-        text = currentText.substring(0, text.length + 1);
-      }
-
-      document.getElementById('typing-text').innerHTML = text;
-
-      let typeSpeed = 100; // Adjust typing speed here
-
-      if (isDeleting) {
-        typeSpeed /= 2; // Adjust deleting speed here
-      }
-
-      if (!isDeleting && text === currentText) {
-        typeSpeed = 1000; // Pause at end, adjust as needed
-        isDeleting = true;
-      } else if (isDeleting && text === '') {
-        isDeleting = false;
-        index++;
-        if (index === textArray.length) {
-          index = 0;
-        }
-      }
-
-      setTimeout(type, typeSpeed);
-    }
-
-    window.onload = type;
-  </script>
-  </h1>
-
+          <h1 id="typing-text" style={{ color: '#16f2b3' }}></h1>
           <div className="my-12 flex items-center gap-5">
             <Link
               href={personalData.github}
