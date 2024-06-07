@@ -1,5 +1,5 @@
 // @flow strict
-
+import React, { useState, useEffect, useRef } from "react";
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,9 +14,9 @@ function HeroSection() {
   const textRef = useRef(null); // useRef to store typed text element
 
   useEffect(() => {
-    const text = ", I'm a Professional " + personalData.designation + ".";
+    const text = ", I'm a Professional Web Developer.";
     let i = 0;
-    let isTyping = true; // Flag to control loop
+    let isTyping = true;
 
     const typeWriter = () => {
       if (isTyping && i < text.length) {
@@ -27,11 +27,17 @@ function HeroSection() {
         // Reset after typing whole text
         setTypedText("");
         i = 0;
-        setTimeout(typeWriter, 1000); // Adjust pause between loops (ms)
+        isTyping = false;
+        setTimeout(() => {
+          isTyping = true;
+          typeWriter();
+        }, 1000); // Adjust pause between loops (ms)
+      } else {
+        // Add blinking cursor using CSS
+        textRef.current.classList.add("blinking-cursor");
       }
     };
 
-    // Start typing animation on component mount
     typeWriter();
 
     return () => {
@@ -55,7 +61,7 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            <span ref={textRef}>{typedText}</span>
+             <span ref={textRef}>{typedText}</span>
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
