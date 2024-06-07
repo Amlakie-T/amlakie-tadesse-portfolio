@@ -25,7 +25,7 @@ async function getData() {
   return filtered;
 };
 
-export default async function getStaticProps() {
+export default async function Home() {
   const blogs = await getData();
 
   return (
