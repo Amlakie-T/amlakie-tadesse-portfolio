@@ -8,6 +8,7 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
+import Typing from "./Typing";
 
 function HeroSection() {
   return (
@@ -29,6 +30,10 @@ function HeroSection() {
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
+            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            .
+            {<Typing />}
+           
           </h1>
 
           <div className="my-12 flex items-center gap-5">
