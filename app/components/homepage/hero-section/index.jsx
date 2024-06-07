@@ -8,43 +8,8 @@ import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
-import { useEffect, useState } from 'react'; // Importing useEffect and useState hooks
 
 function HeroSection() {
-  const [text, setText] = useState('');
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const textArray = [
-    "Developer",
-    "Software Engineer",
-    "Frontend Developer",
-    "Backend Developer"
-  ];
-
-  useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100; // Adjust typing speed here
-    const deleteSpeed = 50; // Adjust deleting speed here
-
-    const type = () => {
-      const currentText = textArray[index];
-      setText(prevText => {
-        return isDeleting ? currentText.substring(0, prevText.length - 1) : currentText.substring(0, prevText.length + 1);
-      });
-
-      if (!isDeleting && text === currentText) {
-        setIsDeleting(true);
-        setTimeout(type, 1000); // Pause at end, adjust as needed
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      }
-
-      setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
-    };
-
-    setTimeout(type, typeSpeed);
-  }, [text, index, isDeleting]);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -61,9 +26,9 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-           {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{text}</span>
-            <span className="typing-cursor"></span>
+            {` , I'm a Professional `}
+            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            .
           </h1>
 
           <div className="my-12 flex items-center gap-5">
