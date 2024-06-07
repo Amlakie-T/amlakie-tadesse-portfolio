@@ -1,5 +1,5 @@
 // @flow strict
-import React, { useEffect } from 'react';
+
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,27 +10,6 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
-  // Function to simulate typing effect
-  const typeEffect = (text, element) => {
-    let i = 0;
-    const speed = 100; // Typing speed in milliseconds
-
-    function type() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, speed);
-      }
-    }
-
-    type();
-  };
-
-  // Call the typing effect function when the component mounts
-  useEffect(() => {
-    const designationElement = document.getElementById("designation");
-    typeEffect(`I'm a Skilled ${personalData.designation}.`, designationElement);
-  }, []);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
@@ -47,8 +26,11 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-           <span id="designation" className=" text-[#16f2b3]"></span>
+            {` , I'm a Professional `}
+            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            .
           </h1>
+
           <div className="my-12 flex items-center gap-5">
             <Link
               href={personalData.github}
@@ -126,21 +108,15 @@ function HeroSection() {
               <div>
                 <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
                 <span className="text-gray-400">{`'`}</span>
-                <span className="text-amber-300">Amlakie Tadesse</span>
+                <span className="text-amber-300">Abu Said</span>
                 <span className="text-gray-400">{`',`}</span>
               </div>
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className=" text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
-                <span className="text-amber-300">Java</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Kotlin</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Flutter</span>
-                <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">React</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">JavaScript</span>
+                <span className="text-amber-300">NextJS</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Redux</span>
                 <span className="text-gray-400">{"', '"}</span>
@@ -152,7 +128,7 @@ function HeroSection() {
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">MongoDB</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Firebase</span>
+                <span className="text-amber-300">Docker</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">AWS</span>
                 <span className="text-gray-400">{"'],"}</span>
@@ -195,7 +171,7 @@ function HeroSection() {
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
                 <span className="mr-2 text-white">skills.length</span>
                 <span className="mr-2 text-amber-300">&gt;=</span>
-                <span className="text-orange-400">7</span>
+                <span className="text-orange-400">5</span>
               </div>
               <div><span className="ml-8 lg:ml-16 mr-2 text-gray-400">{`);`}</span></div>
               <div><span className="ml-4 lg:ml-8 text-gray-400">{`};`}</span></div>
