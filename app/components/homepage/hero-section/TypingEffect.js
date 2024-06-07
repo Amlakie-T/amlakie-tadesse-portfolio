@@ -1,35 +1,55 @@
+import React, { useEffect, useState } from 'react';
 
-// TypingEffect.js
-
-import React, { useState, useEffect } from 'react';
-
-const TypingEffect = ({ textArray, typingSpeed }) => {
+function TypingEffect() {
   const [text, setText] = useState('');
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const textArray = [
+    "Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer"
+  ];
+  let index = 0;
+  let isDeleting = false;
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const type = () => {
       const currentText = textArray[index];
-
       if (isDeleting) {
         setText(currentText.substring(0, text.length - 1));
       } else {
         setText(currentText.substring(0, text.length + 1));
       }
 
-      if (!isDeleting && text === currentText) {
-        setIsDeleting(true);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setIndex((index + 1) % textArray.length);
+      let typeSpeed = 100; // Adjust typing speed here
+
+      if (isDeleting) {
+        typeSpeed /= 2; // Adjust deleting speed here
       }
-    }, typingSpeed);
 
-    return () => clearTimeout(timeout);
-  }, [text, index, isDeleting, textArray, typingSpeed]);
+      if (!isDeleting && text === currentText) {
+        typeSpeed = 1000; // Pause at end, adjust as needed
+        isDeleting = true;
+      } else if (isDeleting && text === '') {
+        isDeleting = false;
+        index++;
+        if (index === textArray.length) {
+          index = 0;
+        }
+      }
 
-  return <span>{text}</span>;
-};
+      setTimeout(type, typeSpeed);
+    };
+
+    type();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
+
+  return (
+    <span className="text-[#16f2b3]">
+      {text}<span className="typing-cursor"></span>
+    </span>
+  );
+}
 
 export default TypingEffect;
