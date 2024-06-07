@@ -14,36 +14,38 @@ function HeroSection() {
   const textRef = useRef(null); // useRef to store typed text element
 
   useEffect(() => {
-    const text = ", I'm a Professional Web Developer.";
-    let i = 0;
-    let isTyping = true;
+    if (typeof window !== "undefined") {
+      const text = ", I'm a Professional Web Developer.";
+      let i = 0;
+      let isTyping = true;
 
-    const typeWriter = () => {
-      if (isTyping && i < text.length) {
-        setTypedText(typedText + text.charAt(i));
-        i++;
-        setTimeout(typeWriter, 50); // Adjust speed here (in milliseconds)
-      } else if (isTyping) {
-        // Reset after typing whole text
-        setTypedText("");
-        i = 0;
-        isTyping = false;
-        setTimeout(() => {
-          isTyping = true;
-          typeWriter();
-        }, 1000); // Adjust pause between loops (ms)
-      } else {
-        // Add blinking cursor using CSS (style applied inline)
-        textRef.current.style.animation = "blink 0.5s step-end infinite";
-      }
-    };
+      const typeWriter = () => {
+        if (isTyping && i < text.length) {
+          setTypedText(typedText + text.charAt(i));
+          i++;
+          setTimeout(typeWriter, 50); // Adjust speed here (in milliseconds)
+        } else if (isTyping) {
+          // Reset after typing whole text
+          setTypedText("");
+          i = 0;
+          isTyping = false;
+          setTimeout(() => {
+            isTyping = true;
+            typeWriter();
+          }, 1000); // Adjust pause between loops (ms)
+        } else {
+          // Add blinking cursor using CSS (style applied inline)
+          textRef.current.style.animation = "blink 0.5s step-end infinite";
+        }
+      };
 
-    typeWriter();
+      typeWriter();
+    }
 
     return () => {
       isTyping = false; // Cleanup function to stop loop on unmount
     };
-  }, []); // Empty dependency array to run only once
+  }, []);
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
       <Image
