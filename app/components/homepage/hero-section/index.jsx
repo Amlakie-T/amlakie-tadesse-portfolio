@@ -43,6 +43,7 @@ function HeroSection() {
             {` , I'm a Skilled      `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
+            
              {typedText && <span className=" text-[#16f2b3]">{typedText}</span>}
           </h1>
           <div className="my-12 flex items-center gap-5">
