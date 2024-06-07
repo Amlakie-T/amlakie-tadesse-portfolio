@@ -1,3 +1,6 @@
+
+import React from 'react';
+import TypingEffect from './hero-section/TypingEffect';
 import { personalData } from "@/utils/data/personal-data";
 import AboutSection from "./components/homepage/about";
 import Blog from "./components/homepage/blog";
@@ -28,6 +31,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
+      <TypingEffect />
       <AboutSection />
       <Experience />
       <Skills />
