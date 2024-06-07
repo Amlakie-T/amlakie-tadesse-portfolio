@@ -15,16 +15,19 @@ export const personalData = {
   devUsername: "Amlakie-T",
   resume: "https://drive.google.com/file/d/15IIh_EWX5ouN9mOuuxGjnRzoQ1uTwmHl/view?usp=drive_link"
 }
-const designationSpan = document.getElementById("designation");
-const text = personalData.designation;
-let index = 0;
 
-function type() {
-  if (index < text.length) {
-    designationSpan.textContent += text.charAt(index);
-    index++;
-    setTimeout(type, 100); // Adjust the typing speed here (in milliseconds)
+if (process.browser) {
+  const designationSpan = document.getElementById("designation");
+  const text = personalData.designation;
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      designationSpan.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100); // Adjust the typing speed here (in milliseconds)
+    }
   }
-}
 
-type();
+  type();
+}
