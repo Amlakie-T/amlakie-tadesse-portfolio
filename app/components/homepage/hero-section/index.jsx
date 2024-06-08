@@ -26,11 +26,11 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I am a `}
-            <span className=" text-[#16f2b3]" style={{ fontSize: '70px' }}>{personalData.designation}</span>
+            {` , I'm a `}
+            <span className=" text-[#16f2b3]" style={{ fontSize: '45px' }}>{personalData.designation}</span>
             .
             <br />
-            <span className=" text-[#16f2b3]" style={{ color: '#08ec0c', fontSize: '50px' }}>{<TypingEffect />}</span>
+            <span className=" text-[#16f2b3]" style={{ color: '#08ec0c', fontSize: '35px' }}>{<TypingEffect />}</span>
           </h1>
     
           <div className="my-12 flex items-center gap-5">
