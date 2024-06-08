@@ -22,9 +22,9 @@ const TypingEffect = () => {
         : currentText.substring(0, prevText.length + 1)
     );
 
-    let typeSpeed = 200; // Slower typing speed
+    let typeSpeed = 50; // Slower typing speed
     if (isDeleting) {
-      typeSpeed = 100; // Slower deleting speed
+      typeSpeed = 50; // Slower deleting speed
     }
 
     if (!isDeleting && text === currentText) {
