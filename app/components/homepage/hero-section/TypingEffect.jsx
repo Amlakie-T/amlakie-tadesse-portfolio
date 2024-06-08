@@ -33,14 +33,14 @@ const TypingEffect = () => {
     } else if (isDeleting && text === '') {
       setIsDeleting(false);
       setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      typeSpeed = 2000; // Pause before starting the next word
+      typeSpeed = 5000; // Pause before starting the next word
     } else {
       setTimeout(type, typeSpeed);
     }
   }, [text, isDeleting, index, textArray]);
 
   useEffect(() => {
-    const timeoutId = setTimeout(type, 200);
+    const timeoutId = setTimeout(type, 500);
     return () => clearTimeout(timeoutId);
   }, [type]);
 
@@ -53,7 +53,7 @@ const TypingEffect = () => {
       <style>{`
         .typing-cursor {
           display: inline-block;
-          width: 4px; /* Adjust cursor width */
+          width: 5px; /* Adjust cursor width */
           height: 25px; /* Adjust cursor height */
           background-color: #b30059; /* Adjust cursor color */
           animation: blink-animation 1.2s infinite;
