@@ -4,10 +4,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 
 const TypingEffect = () => {
   const textArray = [
-    'Developer',
-    'Software Engineer',
-    'Frontend Developer',
-    'Backend Developer'
+    
+    'Full Stack Software Developer'
+   
   ];
 
   const [index, setIndex] = useState(0);
