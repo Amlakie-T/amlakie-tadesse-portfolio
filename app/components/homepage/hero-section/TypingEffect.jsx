@@ -13,7 +13,6 @@ const TypingEffect = () => {
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [cycleComplete, setCycleComplete] = useState(false);
 
   const type = useCallback(() => {
     const currentText = textArray[index];
@@ -23,32 +22,22 @@ const TypingEffect = () => {
         : currentText.substring(0, prevText.length + 1)
     );
 
-    let typeSpeed = 100; // Slower typing speed
+    let typeSpeed = 200; // Slower typing speed
     if (isDeleting) {
-      typeSpeed = 50; // Slower deleting speed
+      typeSpeed = 100; // Slower deleting speed
     }
 
     if (!isDeleting && text === currentText) {
-      if (index === textArray.length - 1) {
-        setCycleComplete(true); // Signal cycle complete
-        setTimeout(() => {
-          setIsDeleting(true);
-        }, 2000); // Longer pause at end of cycle
-      } else {
-        setTimeout(() => setIsDeleting(true), 2000); // Pause at end of typing each text
-      }
+      typeSpeed = 2000; // Pause at end of typing
+      setTimeout(() => setIsDeleting(true), typeSpeed);
     } else if (isDeleting && text === '') {
       setIsDeleting(false);
       setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      if (cycleComplete) {
-        setCycleComplete(false); // Reset cycle complete
-        setTimeout(type, 2000); // Longer pause after completing the cycle
-        return;
-      }
+      typeSpeed = 2000; // Pause before starting the next word
+    } else {
+      setTimeout(type, typeSpeed);
     }
-
-    setTimeout(type, typeSpeed);
-  }, [text, isDeleting, index, textArray, cycleComplete]);
+  }, [text, isDeleting, index, textArray]);
 
   useEffect(() => {
     const timeoutId = setTimeout(type, 200);
