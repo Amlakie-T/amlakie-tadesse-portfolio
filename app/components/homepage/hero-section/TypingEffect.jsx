@@ -10,10 +10,11 @@ function TypingEffect() {
                 <Typewriter
                     options={{
                         strings: [
-                            "Developer",
-                            "Software Engineer",
                             "Frontend Developer",
                             "Backend Developer",
+                            "Mobile Developer",
+                            "Web Developer",
+                            "Software Engineer",
                         ],
                         autoStart: true,
                         loop: true,
