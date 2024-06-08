@@ -26,7 +26,8 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
+            {` , I'm,`}
+            <span></span>
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
             <span className=" text-[#16f2b3]">{<TypingEffect />}</span>
