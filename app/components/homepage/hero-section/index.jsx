@@ -9,7 +9,6 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 import TypingEffect from './TypingEffect';
-import Typing from './Typing';
 function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-between py-4 lg:py-12">
@@ -29,9 +28,6 @@ function HeroSection() {
             <span className=" text-pink-500">{personalData.name}</span>
             {` , I'm a Professional `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
-            .
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]"><Typing/></span>
             .
           </h1>
         <div>
