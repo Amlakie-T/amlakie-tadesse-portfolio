@@ -1,42 +1,49 @@
-"use client";
+use client;
 
 import React, { useEffect, useState, useCallback } from 'react';
 
 const TypingEffect = () => {
   const textArray = [
-    
-    'Full Stack Software Developer'
-   
+    'Developer',
+    'Software Engineer',
+    'Frontend Developer',
+    'Backend Developer',
   ];
 
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [waitingTime, setWaitingTime] = useState(3000); // Customizable waiting time
 
   const type = useCallback(() => {
     const currentText = textArray[index];
-    setText(prevText =>
+    setText((prevText) =>
       isDeleting
         ? currentText.substring(0, prevText.length - 1)
         : currentText.substring(0, prevText.length + 1)
     );
 
-    let typeSpeed = 50; // Slower typing speed
-    if (isDeleting) {
-      typeSpeed = 50; // Slower deleting speed
-    }
+    const typeSpeed = 50; // Adjust typing speed
 
     if (!isDeleting && text === currentText) {
-      typeSpeed = 2000; // Pause at end of typing
-      setTimeout(() => setIsDeleting(true), typeSpeed);
+      setTimeout(() => {
+        setIsDeleting(true);
+      }, typeSpeed); // Wait before deleting
     } else if (isDeleting && text === '') {
       setIsDeleting(false);
-      setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      typeSpeed = 5000; // Pause before starting the next word
+      const nextIndex = (index + 1) % textArray.length;
+
+      // Customizable waiting time based on current index
+      const adjustedWaitingTime = waitingTime + (nextIndex === 0 ? 3000 : 0); // Add extra waiting time before starting from the beginning
+
+      setTimeout(() => {
+        setIndex(nextIndex);
+        type();
+      }, adjustedWaitingTime);
     } else {
       setTimeout(type, typeSpeed);
     }
-  }, [text, isDeleting, index, textArray]);
+  }, [text, isDeleting, index, textArray, waitingTime]);
 
   useEffect(() => {
     const timeoutId = setTimeout(type, 500);
