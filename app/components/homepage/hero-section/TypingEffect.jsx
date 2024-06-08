@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 const TypingEffect = () => {
   const textArray = [
@@ -14,35 +14,35 @@ const TypingEffect = () => {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    const type = () => {
-      const currentText = textArray[index];
-      setText(prevText =>
-        isDeleting
-          ? currentText.substring(0, prevText.length - 1)
-          : currentText.substring(0, prevText.length + 1)
-      );
+  const type = useCallback(() => {
+    const currentText = textArray[index];
+    setText(prevText =>
+      isDeleting
+        ? currentText.substring(0, prevText.length - 1)
+        : currentText.substring(0, prevText.length + 1)
+    );
 
-      let typeSpeed = 300; // Adjust typing speed here
-      if (isDeleting) {
-        typeSpeed /= 2; // Adjust deleting speed here
-      }
+    let typeSpeed = 200; // Slower typing speed
+    if (isDeleting) {
+      typeSpeed = 100; // Slower deleting speed
+    }
 
-      if (!isDeleting && text === currentText) {
-        typeSpeed = 1500; // Pause at end, adjust as needed
-        setIsDeleting(true);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      }
+    if (!isDeleting && text === currentText) {
+      typeSpeed = 1500; // Pause at end
+      setIsDeleting(true);
+    } else if (isDeleting && text === '') {
+      setIsDeleting(false);
+      setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+    }
 
-      setTimeout(type, typeSpeed);
-    };
-
-    const timeoutId = setTimeout(type, 100);
-
+    const timeoutId = setTimeout(type, typeSpeed);
     return () => clearTimeout(timeoutId);
   }, [text, isDeleting, index, textArray]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(type, 200);
+    return () => clearTimeout(timeoutId);
+  }, [type]);
 
   return (
     <div>
