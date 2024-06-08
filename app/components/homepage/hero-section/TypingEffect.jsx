@@ -13,7 +13,7 @@ const TypingEffect = () => {
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [waitingTime, setWaitingTime] = useState(3000); // Customizable waiting time
+  const [waitingTime, setWaitingTime] = useState(1000); // Customizable waiting time
 
   const type = useCallback(() => {
     const currentText = textArray[index];
@@ -33,13 +33,10 @@ const TypingEffect = () => {
       setIsDeleting(false);
       const nextIndex = (index + 1) % textArray.length;
 
-      // Customizable waiting time based on current index
-      const adjustedWaitingTime = waitingTime + (nextIndex === 0 ? 3000 : 0); // Add extra waiting time before starting from the beginning
-
       setTimeout(() => {
         setIndex(nextIndex);
         type();
-      }, adjustedWaitingTime);
+      }, waitingTime); // Consistent waiting time after deletion
     } else {
       setTimeout(type, typeSpeed);
     }
