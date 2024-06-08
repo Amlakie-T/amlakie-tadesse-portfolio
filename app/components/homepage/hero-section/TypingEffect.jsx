@@ -22,21 +22,20 @@ const TypingEffect = () => {
         : currentText.substring(0, prevText.length + 1)
     );
 
-    let typeSpeed = 200; // Slower typing speed
+    let typeSpeed = 100; // Slower typing speed
     if (isDeleting) {
-      typeSpeed = 100; // Slower deleting speed
+      typeSpeed = 50; // Slower deleting speed
     }
 
     if (!isDeleting && text === currentText) {
-      typeSpeed = 1500; // Pause at end
-      setIsDeleting(true);
+      typeSpeed = 2000; // Pause at end of typing
+      setTimeout(() => setIsDeleting(true), typeSpeed);
     } else if (isDeleting && text === '') {
       setIsDeleting(false);
       setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+    } else {
+      setTimeout(type, typeSpeed);
     }
-
-    const timeoutId = setTimeout(type, typeSpeed);
-    return () => clearTimeout(timeoutId);
   }, [text, isDeleting, index, textArray]);
 
   useEffect(() => {
