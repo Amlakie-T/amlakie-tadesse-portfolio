@@ -31,7 +31,7 @@ function HeroSection() {
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
             {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{<Typing/>}</span>
+            <span className=" text-[#16f2b3]"><Typing/></span>
             .
           </h1>
         <div>
