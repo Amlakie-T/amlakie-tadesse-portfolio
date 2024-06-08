@@ -14,7 +14,7 @@ export const educations = [
   {
     id: 3,
     title: "Secondary School Certificate",
-    duration: "208 - 2015",
+    duration: "2008 - 2015",
     institution: "Debre Elias Secondary School",
   }
 ]
