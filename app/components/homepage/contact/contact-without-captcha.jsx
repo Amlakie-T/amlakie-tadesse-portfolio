@@ -100,7 +100,7 @@ function ContactWithoutCaptcha() {
             <label className="text-base">Your Message: </label>
             <textarea
               className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
-              maxLength="500"
+              maxLength="1000"
               name="message"
               required={true}
               onChange={(e) => setInput({ ...input, message: e.target.value })}
