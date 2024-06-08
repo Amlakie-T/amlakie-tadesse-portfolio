@@ -13,6 +13,7 @@ const TypingEffect = () => {
   const [index, setIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [cycleComplete, setCycleComplete] = useState(false);
 
   const type = useCallback(() => {
     const currentText = textArray[index];
@@ -28,15 +29,26 @@ const TypingEffect = () => {
     }
 
     if (!isDeleting && text === currentText) {
-      typeSpeed = 2000; // Pause at end of typing
-      setTimeout(() => setIsDeleting(true), typeSpeed);
+      if (index === textArray.length - 1) {
+        setCycleComplete(true); // Signal cycle complete
+        setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000); // Longer pause at end of cycle
+      } else {
+        setTimeout(() => setIsDeleting(true), 2000); // Pause at end of typing each text
+      }
     } else if (isDeleting && text === '') {
       setIsDeleting(false);
       setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-    } else {
-      setTimeout(type, typeSpeed);
+      if (cycleComplete) {
+        setCycleComplete(false); // Reset cycle complete
+        setTimeout(type, 2000); // Longer pause after completing the cycle
+        return;
+      }
     }
-  }, [text, isDeleting, index, textArray]);
+
+    setTimeout(type, typeSpeed);
+  }, [text, isDeleting, index, textArray, cycleComplete]);
 
   useEffect(() => {
     const timeoutId = setTimeout(type, 200);
