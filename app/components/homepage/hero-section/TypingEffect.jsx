@@ -23,6 +23,8 @@ function TypingEffect() {
                         pauseFor: 2000, // Pause before deleting
                     }}
                 />
+
+                <span> </span>
             </h1>
         </div>
     );
