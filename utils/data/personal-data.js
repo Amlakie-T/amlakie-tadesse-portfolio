@@ -9,6 +9,7 @@ export const personalData = {
   github: 'https://github.com/Amlakie-T',
   facebook: 'https://www.facebook.com/Amlakie-T/',
   linkedIn: 'https://www.linkedin.com/in/amlakie/',
+  upwork: 'https://www.upwork.com/freelancers/amlakiet/',
   twitter: 'https://twitter.com/Amlakie_T',
   stackOverflow: 'https://stackoverflow.com/users/25429126/amlakie-tadesse',
   leetcode: "https://leetcode.com/amlakie-t/",
