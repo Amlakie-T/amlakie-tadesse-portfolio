@@ -14,7 +14,7 @@ function TypingEffect() {
                             "Front-End Developer",
                             "Back-End Developer",
                             "Mobile Developer",
-                            "Software Engineer",
+                            "Software Developer",
                         ],
                         autoStart: true,
                         loop: true,
