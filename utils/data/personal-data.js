@@ -14,7 +14,7 @@ export const personalData = {
   stackOverflow: 'https://stackoverflow.com/users/25429126/amlakie-tadesse',
   leetcode: "https://leetcode.com/amlakie-t/",
   devUsername: "Amlakie-T",
-  resume: "https://drive.google.com/file/d/1jciqMlMcKFIp_3HBUJBqMN3D9kMXhj3j/view?usp=sharing"
+  resume: "https://drive.google.com/file/d/1NTJWsn24SxAC3uAIqg-nD4QnHvmXMqTB/view?usp=drive_link"
 }
 
 if (process.browser) {
