@@ -2,7 +2,7 @@ export const personalData = {
   name: "Amlakie Tadesse",
   profile: '/amlakie_t.png',
   designation: "Android Developer, Web Developer, IT Support Engineer",
-  description: "I'm Amlakie, an experienced Android Developer and Web Developer adept at creating robust solutions for both mobile apps and websites. Skilled in Android development using Java, Kotlin, and Flutter. Proficient in front-end technologies (HTML, CSS, JavaScript with React.js) and back-end development with Node.js and PHP. Known for problem-solving, mastering new technologies quickly, and collaborating effectively to deliver innovative projects. I am available for any kind of job opportunity that suits my skills and interests.",
+  description: "I'm Amlakie, an experienced Android Developer and Web Developer adept at creating robust solutions for both mobile apps and websites. Skilled in Android development using Kotlin and Java. Proficient in front-end technologies (HTML, CSS, JavaScript with React.js) and back-end development with Node.js and PHP. Known for problem-solving, mastering new technologies quickly, and collaborating effectively to deliver innovative projects. I am available for any kind of job opportunity that suits my skills and interests.",
   email: 'amlakie.tadese@gmail.com',
   phone: '+251-912-416946',
   address: 'Addis Ababa, Ethiopia',
