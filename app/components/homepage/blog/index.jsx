@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import BlogCardMain from './blog-card-main';
-import blogPosts from './utils/data/blogPosts';
+import blogPosts from '@/utils/data/blogPosts';
 
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
