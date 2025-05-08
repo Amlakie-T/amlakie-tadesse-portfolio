@@ -22,4 +22,5 @@ async function BlogDetails({params}) {
   );
 };
 
+
 export default BlogDetails;
