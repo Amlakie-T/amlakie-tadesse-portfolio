@@ -1,13 +1,13 @@
 export const experiences = [
   {
     id: 1,
-    title: 'Software Developer',
+    title: 'Android Developer',
     company: "SS Communication PLC.",
     duration: "(Jan 2024 - Present)"
   },
   {
     id: 2,
-    title: "FullStack Developer",
+    title: "Web Developer",
     company: "Fiverr (freelance)",
     duration: "(Jun 2021 - Present)"
   },
